@@ -1,0 +1,26 @@
+<h3>Trace &mdash; {{tvm.quiz.name.toUpperCase()}}</h3>
+<div class="card">
+    <div class="card-content">
+        <div class="card-title">{{tvm.quiz.name}}</div>
+        <div class="red darken-4 white-text" style="padding: 2px 5px;" ng-if="tvm.errorMessage">
+            {{tvm.errorMessage}}
+            <span ng-if="tvm.quiz.attempts > 1"> &ndash; attempts: {{tvm.quiz.attempts}}</span>
+        </div>
+        <p ng-if="!tvm.quiz.completed">
+            Find the function named '{{tvm.quiz.name}}' and
+            determine its output when it is called
+            <span ng-if="tvm.quiz.param">with the parameter ({{tvm.quiz.param}})</span>.
+            In other words, what does
+            <code>{{tvm.quiz.name}}({{tvm.quiz.param}})</code> return?
+        </p>
+        <p ng-if="tvm.quiz.completed" class="green lighten-3" style="padding: 5px 10px;">
+            Well Done! You got this one correct!
+            <br/>
+            <button-wave ng-click="tvm.reset()">reset</button-wave>
+        </p>
+        <div class="card-action" ng-if="!tvm.quiz.completed">
+            <input type="text" ng-model="tvm.answer" placeholder="put your anwser here" when-enter-key="tvm.check()"/>
+            <button-wave ng-click="tvm.check()" icon="check"></button-wave>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="valign-wrapper" style="justify-content: center;">
+    <div class="valign center-align" style="width: 100%;">
+        <div ng-if="!vm.isLoggedIn">
+            <div class="card-panel red">Must be authenticated before using this app!</div>
+            <a href="#/login">Please Login!</a>
+        </div>
+        <div class="row" ng-if="vm.isLoggedIn">
+            <div class="col s12 m4 l2">
+                <identity-card user="vm.user"></identity-card>
+            </div>
+            <div class="col s12 m4 l2">
+                <div><strong>Pick a Quiz</strong></div>
+                <ul class="collection">
+                    <li class="collection-item" ng-repeat="q in vm.quizzes">
+                        <a ui-sref="home.{{q.name}}">{{q.name}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col s12 m4 l6 chatter">
+                <ui-view></ui-view>
+            </div>
+        </div>
+
+    </div>
+</div>
